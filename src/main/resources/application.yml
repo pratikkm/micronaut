@@ -1,0 +1,33 @@
+micronaut:
+  application:
+    name: jwtauth
+
+  security:
+    authentication: bearer
+    token:
+      jwt:
+        signatures:
+          secrete:
+            generator:
+              secrete: mysecrete
+              base64: true
+              jws-algorithm: HS256
+
+
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/test
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: pratik
+
+jpa:
+  default:
+    packages-to-scan:
+      - "jwtauth.model"
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true
